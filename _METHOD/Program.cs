@@ -59,7 +59,6 @@ string Method4(int count, string text)
 }
 //Вывод
 string res = Method4(10, "z");// : 10 - количество раз, "" - текст
-Console.WriteLine(res); //вывод на экран результата
 
 string Replace(string text, char oldValue, char newValue)
 {
