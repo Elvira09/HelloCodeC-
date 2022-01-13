@@ -12,21 +12,25 @@
 // FillArray - метод заполняет массив случайными числами от 1-10, обращаясь к аргументу collection (массив с типом данных int)
 // IndexOf - метод по поиску элемента массива и сравнение его с заданным для поиска
 
-void Method1() 
+// // ДВУМЕРНЫЕ МАССИВЫ
+// PrintArray - Метод вывода двумерного массива
+
+void Method1() // Method1 - метод, который выводит что-то на консоль
 {
     Console.WriteLine("Автор ..."); //тело метода, который выводит что то на консоль
 }
-// Вызов метода
-Method1();
+    // Вызов метода
+    Method1();
 
-void Method2(string msg) 
+
+void Method2(string msg) // Method2 - выводит на консоль принятый аргумент
 {
     Console.WriteLine(msg); //выводим на консоль принятый аргумент
 }
-// Вызов
-Method2(msg: "Текст сообщения");
+    // Вызов
+    Method2(msg: "Текст сообщения");
 
-void Method21(string msg, int count)
+void Method21(string msg, int count)// Method21 - выводит на консоль принятый аргумент несколько раз
 {
     int i = 0;
     while (i < count)
@@ -35,18 +39,18 @@ void Method21(string msg, int count)
         i++;
     }
 }
-// Вызов
-Method21(msg: "Текст", count: 4); //выводим сообщение 4 раза, count - количество выводов даннаго сообщения
-Method21(count: 4, msg: "новый текст");
+    // Вызов
+    Method21(msg: "Текст", count: 4); //выводим сообщение 4 раза, count - количество выводов даннаго сообщения
+    Method21(count: 4, msg: "новый текст");
 
-int Method3() //обязательно указать тип данных 
+int Method3() //обязательно указать тип данных Method3 - выводит на консоль текущий год
 {
     return DateTime.Now.Year; //возвращаем текущий год 
 }
-// Вызов
-int year = Method3(); //Console.WriteLine(year);
+    // Вызов
+    int year = Method3(); //Console.WriteLine(year);
 
-string Method4(int count, string text)
+string Method4(int count, string text)// Method4 - выводит на консоль текст или символ несколько раз
 {
     string result = String.Empty;//изначально выводится пустой строкой функцией String.Empty
     //цикл со счетчиком 
@@ -57,8 +61,8 @@ string Method4(int count, string text)
     }
     return result;
 }
-//Вывод
-string res = Method4(10, "z");// : 10 - количество раз, "" - текст
+    //Вывод
+    string res = Method4(10, "z");// : 10 - количество раз, "" - текст
 
 string Replace(string text, char oldValue, char newValue)
 {
@@ -75,8 +79,8 @@ string Replace(string text, char oldValue, char newValue)
 
     return result;
 }
-//Вывод
-string newText = Replace(text, ' ', '|');
+    //Вывод
+    string newText = Replace(text, ' ', '|');
 
 void PrintArray(int[] array)//в качестве аргумента приходит массив
 {
@@ -88,8 +92,8 @@ void PrintArray(int[] array)//в качестве аргумента прихо�
     }
     Console.WriteLine();//пустая строка
 }
-//Вывод
-PrintArray(arr);
+    //Вывод
+    PrintArray(arr);
 
 void SelectionSort(int[] array) //в качестве аргумента приходит массив
 {
@@ -109,8 +113,8 @@ void SelectionSort(int[] array) //в качестве аргумента при�
         array[minPosition] = temporary;//в минимальную позицию кладем временную
     }
 }
-//Вывод
-SelectionSort(arr);
+    //Вывод
+    SelectionSort(arr);
 
 
 int Max(int arg1, int arg2, int arg3) 
@@ -120,8 +124,8 @@ int Max(int arg1, int arg2, int arg3)
     if (arg3 > result) result = arg3;
     return result; // возвращаем резутьтат
 }
-//Вывод
-int max = Max(a, b, c); 
+    //Вывод
+    int max = Max(a, b, c); 
 
 void FillArray(int[] collection) //вместо array лучше назвать collection, иначе могут возникать ошиьки
 {
@@ -135,8 +139,8 @@ void FillArray(int[] collection) //вместо array лучше назвать 
 
     }
 }
-//ВЫВОД
-FillArray(array);
+    //ВЫВОД
+    FillArray(array);
 
 int IndexOf(int[] collection, int find)
 {
@@ -154,7 +158,97 @@ int IndexOf(int[] collection, int find)
     }
     return position;
 }
-//Вывод
-int pos = IndexOf(array, 444);//ищем значение 444 в массиве
+    //Вывод
+    int pos = IndexOf(array, 444);//ищем значение 444 в массиве
+
+
+// //ДВУМЕРНЫЕ МАССИВЫ
+
+
+
+void PrintArray(int[,] matr) // Метод вывода двумерного массива
+{
+    for (int i = 0; i < matr.GetLength(0); i++) //GetLength(0) - для строк
+    {
+        for (int j = 0; j < matr.GetLength(1); j++) //GetLength(1) - для столбцов
+        {
+            Console.Write($"{matr[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
+    // Вывод
+    PrintArray(matrix);
+
+// Метод по заполнению двумерного массива случайными числами
+void FillArray(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+        {
+            matr[i, j] = new Random().Next(1, 10);// [1; 10)
+        }
+    }
+}
+    // Вывод
+    FillArray(matrix);
+
+
+// Метод по выводу на консоль только конкретного элемента 0 или 1
+void PrintImage(int[,] image)
+{
+    for (int i = 0; i < image.GetLength(0); i++)
+    {
+        for (int j = 0; j < image.GetLength(1); j++)
+        {
+            //Console.Write($"{image[i, j]} ");
+            if (image[i, j] == 0) Console.Write($" "); //если элемент равен ) - просто печатаем пробел
+            else Console.Write($"+");//иначе выводим на печать +
+        }
+        Console.WriteLine();
+    }
+}
+    // Вывод
+    PrintImage(pic);
+
+// Метод по закраске внутри изображения с помощью рекурсии
+void FillImage(int row, int col)
+{
+    if (pic[row, col] == 0)
+    {
+        pic[row, col] = 1;
+        FillImage(row - 1, col);
+        FillImage(row, col - 1);
+        FillImage(row + 1, col);
+        FillImage(row, col + 1);
+    }
+}
+    // Вывод
+    FillImage(13, 13);
+
+//Метод по вычислению Факториала с помощью рекурсии
+double Factorial(int n)
+{
+    // 1! = 1 факториал 1 равен 1
+    // 0! = 1 факториал 0 равен 1
+    if (n == 1) return 1;
+    else return n * Factorial(n - 1);
+}
+    // Вывод
+    Factorial(i)
+
+
+// Метод по выводу чисел Фибоначи
+// f(1) = 1
+// f(2) = 1
+// f(n) = f(n-1) + f(n-2)
+double Fibonacci(int n)
+{
+    if(n == 1 || n == 2) return 1;
+    else return Fibonacci(n-1) + Fibonacci(n-2);
+}
+    // Вывод
+    Fibonacci(i)
 
 
