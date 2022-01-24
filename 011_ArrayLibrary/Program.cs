@@ -40,7 +40,7 @@ int IndexOf(int[] collection, int find)
         if (collection[index] == find)
         {
             position = index;
-            break; //останавливает цикл, применимо когда значение элементов повторяются
+            // break; //останавливает цикл, применимо когда значение элементов повторяются
         }
         index++;
     }
